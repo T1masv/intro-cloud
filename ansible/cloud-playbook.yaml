@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+  roles:
+    - role: traefik
+    - role: cert-manager
+    - role: mysql
+    - role: applications
