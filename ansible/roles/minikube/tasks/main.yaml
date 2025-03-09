@@ -11,3 +11,6 @@
   rescue:
     - name: Start Minikube if status check fails (initial start)
       command: minikube start
+- name:
+  command: helm plugin install https://github.com/databus23/helm-diff
+  ignore_errors: true
