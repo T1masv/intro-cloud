@@ -1,0 +1,8 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: replacepath
+  namespace: traefik # Or the namespace of your Ingress and service
+spec:
+  replacePath:
+    path: "/subscriptions" # The path to replace the incoming path with

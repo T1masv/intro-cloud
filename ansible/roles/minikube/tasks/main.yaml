@@ -1,0 +1,13 @@
+- name: Ensure Minikube is running
+  block:
+    - name: Check Minikube status
+      command: minikube status
+      register: minikube_status
+      ignore_errors: true
+
+    - name: Start Minikube if not running
+      command: minikube start
+      when: "'Stopped' in minikube_status.stdout or 'Error' in minikube_status.stdout or minikube_status.rc != 0"
+  rescue:
+    - name: Start Minikube if status check fails (initial start)
+      command: minikube start

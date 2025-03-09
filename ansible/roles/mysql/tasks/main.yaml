@@ -1,0 +1,5 @@
+- name: Deploy mysql database
+  command: helmfile apply
+  args:
+      chdir: "{{ playbook_dir }}/../k8s/helm/mysql/"
+  ignore_errors: true

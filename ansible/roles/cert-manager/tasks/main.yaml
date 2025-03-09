@@ -1,0 +1,15 @@
+- name: Deploy cert-manager with Helmfile
+  command: helmfile apply 
+  args:
+    chdir: "{{ playbook_dir }}/../k8s/helm/cert-manager"
+  timeout: 120
+
+- name: Apply cluster issuers (prod)
+  command: kubectl apply -f cluster-issuers/prod.yaml
+  args:
+    chdir: "{{ playbook_dir }}/../k8s/helm/cert-manager"
+
+- name: Apply cluster issuers (staging)
+  command: kubectl apply -f cluster-issuers/staging.yaml
+  args:
+    chdir: "{{ playbook_dir }}/../k8s/helm/cert-manager"

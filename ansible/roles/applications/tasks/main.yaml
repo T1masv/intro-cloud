@@ -1,0 +1,8 @@
+- name: Deploy subscription-service with helm
+  command: helm upgrade --install -n apps --create-namespace subscriptions .
+  args:
+    chdir: "{{ playbook_dir }}/../k8s/helm/subscription"
+- name: Deploy user-service with helm
+  command: helm upgrade --install -n apps --create-namespace user .
+  args:
+    chdir: "{{ playbook_dir }}/../k8s/helm/user"

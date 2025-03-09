@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+  roles:
+    - role: minikube
+    - role: traefik
+    - role: cert-manager
+    - role: mysql
+    - role: applications

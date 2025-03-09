@@ -1,0 +1,15 @@
+repositories:
+ - name: traefik
+   url: https://traefik.github.io/charts
+
+releases:
+- name: traefik
+  namespace: traefik
+  createNamespace: true
+  chart: traefik/traefik
+  values:
+    - values.yaml
+  set:
+     - name: additionalArguments[0]
+       value: "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
+
