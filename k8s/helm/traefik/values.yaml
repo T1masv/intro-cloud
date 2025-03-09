@@ -1,9 +1,2 @@
 additionalArguments:
   - "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
-
-
-
-ingressRoute:
-  dashboard:
-    enabled: true
-

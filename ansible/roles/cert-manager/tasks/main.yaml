@@ -2,8 +2,9 @@
   command: helmfile apply 
   args:
     chdir: "{{ playbook_dir }}/../k8s/helm/cert-manager"
-  timeout: 120
+  timeout: 300
 
+  
 - name: Apply cluster issuers (prod)
   command: kubectl apply -f cluster-issuers/prod.yaml
   args:

@@ -9,7 +9,3 @@ releases:
   chart: traefik/traefik
   values:
     - values.yaml
-  set:
-     - name: additionalArguments[0]
-       value: "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
-
