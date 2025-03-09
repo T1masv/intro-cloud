@@ -1,0 +1,29 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: apps
+  name: app-reader-writer
+rules:
+- apiGroups: [""] # Core API group
+  resources: ["pods", "pods/log", "configmaps", "secrets", "services", "persistentvolumeclaims"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: ["apps"] # Apps API group
+  resources: ["deployments", "replicasets", "statefulsets", "daemonsets"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: ["batch"] # batch API group
+  resources: ["jobs", "cronjobs"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: app-reader-writer-binding
+  namespace: apps
+subjects:
+- kind: ServiceAccount
+  name: custom-sa
+  namespace: apps
+roleRef:
+  kind: Role
+  name: app-reader-writer
+  apiGroup: rbac.authorization.k8s.io
